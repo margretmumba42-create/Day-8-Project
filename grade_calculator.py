@@ -1,35 +1,35 @@
 # grade_calculator.py
 
-def calculate_grade(mark):
-    """
-    Calculates the letter grade based on a given mark.
+def calculate_average(grades):
+    return sum(grades) / len(grades)
 
-    Args:
-        mark (int or float): The numerical mark.
-
-    Returns:
-        str: The corresponding letter grade (A, B, C, D, E, or F).
-    """
-    if 90 <= mark <= 100:
-        return "A"
-    elif 80 <= mark < 90:
-        return "B"
-    elif 70 <= mark < 80:
-        return "C"
-    elif 60 <= mark < 70:
-        return "D"
-    elif 50 <= mark < 60:
-        return "E"
+def assign_grade(score):
+    if score >= 90:
+        return 'A'
+    elif score >= 80:
+        return 'B'
+    elif score >= 70:
+        return 'C'
+    elif score >= 60:
+        return 'D'
     else:
-        return "F"
+        return 'F'
 
-# Store student names and marks in parallel lists
-students = ["Alice", "Bob", "Charlie", "David", "Eve"]
-marks = [95, 82, 67, 74, 89]
+def student_report(name, *grades):
+    average = calculate_average(grades)
+    grade = assign_grade(average)
+    print(f"Student Name: {name}")
+    print(f"Grades: {grades}")
+    print(f"Average Score: {average:.2f}")
+    print(f"Final Grade: {grade}")
+    print()
 
-# Use a for loop to iterate through the students and print their grades
-for i in range(len(students)):
-    student_name = students[i]
-    student_mark = marks[i]
-    grade = calculate_grade(student_mark)
-    print(f"{student_name}: {student_mark} - Grade {grade}")
+# Collect grades for students
+student_report("Alice", 95, 90, 85)
+student_report("Bob", 70, 75, 80)
+student_report("Charlie", 60, 65, 70)
+
+# Commit to Git:
+# git add grade_calculator.py
+# git commit -m "Day 20: Advanced functions – student grade calculator"
+# git push
